@@ -6,6 +6,6 @@ const connMongo = async () => {
     dbName: 'two-factor-auth',
 })
 .then(()=> console.log('Conectado a mongo'))
-.catch(()=> console.log('Error al conectar a mongo'));
+.catch((e)=> console.log('Error al conectar a mongo: ', e));
 }
 export default connMongo;
