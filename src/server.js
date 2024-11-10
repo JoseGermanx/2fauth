@@ -13,13 +13,13 @@ app.use(express.static('public'))
 
 app.set('view engine', 'pug')
 app.get('/frontend', (req, res) => {
-  res.render('index', { title: 'Hey', message: 'Hello there!' })
+  res.render('index', { title: 'Página de registro a la APP', message: 'Ingresa tu datos para registrarte.' })
 })
 
 // route for receiving de qr code and rendering it
 app.get('/frontend/code', async (req, res) => {
   const img = req.body.img;
-    res.render('scan-code', { title: 'Hey', message: 'Hello there!', img: img })
+    res.render('scan-code', { title: 'Registra tu aplicación de verificación de 2 pasos', message: 'Escane el código con tu app de verificación de 2 pasos y a continuación ingresa un código de 6 dígitos para culminar con el registro', img: img })
 } )
 
 app.get('/', (req, res) => {
@@ -52,7 +52,7 @@ app.post("/register", async (req, res) => {
     QRCode.toDataURL(newUser.key.url)
     .then(url => {
       const data = url.split(',')[1];
-      res.render(`scan-code`, { img: data, idUser: newUser.id });
+      res.render(`scan-code`, { img: data, idUser: newUser.id, title: 'Registra tu aplicación de verificación de 2 pasos', message: 'Escane el código con tu app de verificación de 2 pasos y a continuación ingresa un código de 6 dígitos para culminar con el registro' });
     })
     .catch(err => {
       console.error(err);
