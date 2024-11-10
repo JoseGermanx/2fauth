@@ -2,10 +2,12 @@
 html
   head
     title= title
+    link(rel="stylesheet", href="style.css")
   body
     h1= message
 
-    form(method='post', action='/register')
+  div.container
+    form.form-elem(method='post', action='/register')
       div
         label(for='name') Nombre:
         input(type='text', name='name', id='name')

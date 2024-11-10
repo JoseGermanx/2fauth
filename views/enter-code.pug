@@ -1,0 +1,18 @@
+
+
+//- interfaz con un campo de texto para ingresar el código de verificación y un botón para enviarlo.
+
+html
+    head
+        title= title
+    body
+        h1= message
+        h2= title
+        p= 'You are now logged in'
+        p #{message}
+        p
+        a(href='/logout') logout
+        form(action='/validate' method='post')
+            input(type='text' name='passCode' placeholder='Verification code')
+            input(type='hidden' name='idUser' value=idUser)
+            button(type='submit') Verify

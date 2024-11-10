@@ -8,6 +8,8 @@ const app = express();
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+// directorio de archivos estaticos en ecmascript 6
+app.use(express.static('public'))
 
 app.set('view engine', 'pug')
 app.get('/frontend', (req, res) => {
@@ -49,7 +51,6 @@ app.post("/register", async (req, res) => {
 
     QRCode.toDataURL(newUser.key.url)
     .then(url => {
-      console.log(url);
       const data = url.split(',')[1];
       res.render(`scan-code`, { img: data, idUser: newUser.id });
     })
@@ -98,7 +99,7 @@ app.post("/validate", async (req,res) => {
     })
     
     if (tokenValidates) {
-      res.render('welcome', { title: 'Hey', message: 'Hello there!' })
+      res.render('welcome', { title: 'Gracias por validarte', message: 'Bienvenido' })
     } else {
       res.json({ validated: false})
     }
@@ -108,4 +109,29 @@ app.post("/validate", async (req,res) => {
   };
 })
 
+app.get('/login', async (req, res) => {
+ 
+  res.render('login', { title: 'Hey este es el login', message: 'Logueate' })
+}
+)
+
+app.post('/api/login', async (req, res) => {
+  const { email } = req.body;
+
+  const user = await User.findOne({
+    email
+  });
+
+  if (user) {
+    res.render('enter-code', { title: 'Ingresa tu codigo', message: 'Verificacion 2 pasos!', idUser: user.id })
+    return 
+  }
+  res.json({ message: 'User not found'})
+}
+)
+
+app.get('/api/users', async (req, res) => {
+  const users = await User.find();
+  res.json({total: users.length, users});
+})
 export default app;
