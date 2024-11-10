@@ -1,0 +1,16 @@
+
+html
+  head
+    title= title
+  body
+    h1= message
+
+    form(method='post', action='/api/register')
+      div
+        label(for='name') Nombre:
+        input(type='text', name='name', id='name')
+      div
+        label(for='email') Email:
+        input(type='email', name='email', id='email')
+      div
+        input(type='submit', value='Registrar')

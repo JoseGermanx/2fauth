@@ -1,0 +1,23 @@
+{
+  "name": "2fauth",
+  "type": "module",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "node --watch index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.21.1",
+    "mongoose": "^8.8.1",
+    "pug": "^3.0.3",
+    "qrcode": "^1.5.4",
+    "speakeasy": "^2.0.0",
+    "time2fa": "^1.4.0",
+    "uuid": "^11.0.2"
+  }
+}

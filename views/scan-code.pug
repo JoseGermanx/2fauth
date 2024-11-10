@@ -1,0 +1,16 @@
+
+html
+    head
+        title= title
+    body
+        h1= message
+
+img(src="data:image/png;base64," + img)
+
+form(method='post', action='/api/validate')
+    input(type='hidden', name='idUser', value=idUser)
+    div
+        label(for='text') Code:
+        input(type='text', name='passCode', id='text')
+    div
+        input(type='submit', value='Validar')
