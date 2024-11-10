@@ -1,0 +1,12 @@
+//- vista de bienvenida despues de que el usuario ha validado su cuenta
+html
+    head
+        title= title
+    body
+        h1= message
+        h2= title
+        p= 'You are now logged in'
+        p #{message}
+        p
+        a(href='/logout') logout
+

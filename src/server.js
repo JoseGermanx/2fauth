@@ -24,7 +24,7 @@ app.get('/', (req, res) => {
   res.send('Hello World!');
 });
 
-app.post("/api/register", async (req, res) => {
+app.post("/register", async (req, res) => {
 
   const { name, email } = req.body;
 
@@ -84,7 +84,7 @@ app.post("/api/createcodes", async (req, res) => {
 })
 
 
-app.post("/api/validate", async (req,res) => {
+app.post("/validate", async (req,res) => {
   const { idUser, passCode } = req.body;
   try {
     // Retrieve user from database
@@ -98,7 +98,7 @@ app.post("/api/validate", async (req,res) => {
     })
     
     if (tokenValidates) {
-      res.json({ validated: true })
+      res.render('welcome', { title: 'Hey', message: 'Hello there!' })
     } else {
       res.json({ validated: false})
     }
